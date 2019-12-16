@@ -1,4 +1,7 @@
+# test this game in console
+# for mac users it might not work properly :)
 # i am going to try a fresh start of TETRIS ,a console game using OOP
+
 import os
 import time
 import random
