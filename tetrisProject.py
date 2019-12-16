@@ -19,7 +19,7 @@ def clear_screen():
 def add_more_graphic(func):
     def wrapper(self,board):
         print ( '\t\t\tTETRIS GAME' )
-        print(func(self,board))
+        print(f'Points:{func(self,board)}')
         print('Made by Theodor for learning purposes!')
     return wrapper
 
@@ -51,7 +51,6 @@ class Board:
             self.matrix[a][11] = "*"
         for b in range ( 0, 12 ):
             self.matrix[23][b] = "*"
-            self.matrix[22][b] = "*"
             self.matrix[0][b] = '*'
 
     #draws the matrix
