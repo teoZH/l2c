@@ -40,7 +40,7 @@ def translate_word(some_word):
         print('Word not found!',end=' ')
         sleep(0.6)
         print('Searching for the closest match.....')
-        cursor.execute(f"SELECT word FROM entries.entries WHERE word LIKE '{some_word[:len(some_word)-1]}%';")
+        cursor.execute(f"SELECT word FROM entries.entries WHERE word LIKE '{some_word[:len(some_word)-2]}%';")
         records = cursor.fetchall()
         for x in range(len(records)):
             for y in range(len(records[x])):
@@ -48,9 +48,12 @@ def translate_word(some_word):
                 records.pop(x+1)
         sleep(0.4)
         close = get_close_matches(some_word,records)[0]
-        if close:
-            print('Match found!')
-        else:
+        try:
+            close = get_close_matches(some_word,records)[0]
+            if close:
+                print('Match found!')
+        except:
+            close = None
             print('Nothing has been found!')
         sleep ( 0.1 )
         cursor.close ( )
