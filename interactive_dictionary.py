@@ -1,4 +1,6 @@
 #you should have installed mysql-connector-python
+#get the sql dictionary file and insert it on your own server 
+#most of the things like sleep are added because i like the way it looks :)
 import mysql.connector
 from time import sleep
 from difflib import get_close_matches
@@ -19,7 +21,8 @@ def translate_word(some_word):
     print('Connecting to the SQL database!......',end=' ')
     sleep(0.5)
     print ( 'Translating........' )
-    connection = mysql.connector.connect ( host='localhost', database='entries', user='root', password='' )
+    
+    connection = mysql.connector.connect (host='ip_of_the_server', database='name_of_database', user='some_user',password='pass')
     cursor = connection.cursor ( )
     cursor.execute ( f"SELECT definition FROM entries.entries WHERE word = '{some_word}';" )
     records = cursor.fetchall ( )
